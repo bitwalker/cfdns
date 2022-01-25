@@ -5,7 +5,10 @@ on:
     - main
     tags:
     - '*'
-
+    paths-ignore:
+    - '*.md'
+    - 'examples/*'
+    - '.gitignore'
 jobs:
   image:
     if: github.event_name == 'push'
@@ -35,7 +38,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build Package
+    - name: Build Image
       uses: docker/build-push-action@v2
       with:
         context: .
