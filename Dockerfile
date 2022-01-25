@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.3-labs
 
-FROM --platform=linux/arm64 rust:1.58-alpine3.14 AS build
+FROM rust:1.58-alpine3.14 AS build
 
 WORKDIR /opt/app
 
@@ -14,12 +14,12 @@ EOF
 COPY . .
 
 RUN <<EOF
-cargo build --release --target aarch64-unknown-linux-musl
+cargo build --release
 EOF
 
-FROM --platform=linux/arm64 alpine:3.14 AS app
+FROM alpine:3.14 AS app
 
-COPY --from=build /opt/app/target/aarch64-unknown-linux-musl/release/cfdns /usr/local/bin/cfdns
+COPY --from=build /opt/app/target/release/cfdns /usr/local/bin/cfdns
 
 ENTRYPOINT ["/usr/local/bin/cfdns"]
 CMD ["help"]
