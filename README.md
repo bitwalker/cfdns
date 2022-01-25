@@ -45,8 +45,8 @@ situations where you wish to run the tool by hand, see the output of `cfdns help
 Regardless of how you run `cfdns`, you'll need to configure it. You can pass flags manually, or you can use
 a `config.toml` that you must place in one of the following directories, depending on your usage:
 
-* On a UDM Pro: `/mnt/data/on-boot.d/cfdns/config.toml`
-* On a UDR/UDM SE: `/data/on-boot.d/cfdns/config.toml`
+* On a UDM Pro: `/mnt/data/cfdns/etc/config.toml`
+* On a UDR/UDM SE: `/data/cfdns/etc/config.toml`
 * On a desktop system: either `$XDG_CONFIG_HOME/cfdns/config.toml` or `$HOME/.config/cfdns/config.toml`
 
 You can also pass `--config <path>` or export `CONFIG=<path>` in your shell, to override where the config file is pulled from.

@@ -61,8 +61,8 @@ pub fn read_from_system() -> anyhow::Result<ConfigFile> {
     use crate::system::Platform;
 
     let config_dir = match Platform::detect()? {
-        Platform::UDM | Platform::UDMP => PathBuf::from("/mnt/data/on-boot.d/cfdns"),
-        Platform::UDMSE | Platform::UDR => PathBuf::from("/data/on-boot.d/cfdns"),
+        Platform::UDM | Platform::UDMP => PathBuf::from("/mnt/data/cfdns/etc"),
+        Platform::UDMSE | Platform::UDR => PathBuf::from("/data/cfdns/etc"),
         Platform::Other => match dirs::config_dir() {
             Some(dir) => dir.join("cfdns"),
             None => env::current_dir().unwrap(),
