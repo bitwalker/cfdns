@@ -1,0 +1,1 @@
+*/30 * * * * /mnt/data/on_boot.d/bin/cfdns sync

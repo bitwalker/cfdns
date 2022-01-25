@@ -1,0 +1,45 @@
+name: ci
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    paths-ignore:
+    - '*.md'
+    - 'examples/*'
+    - '.gitignore'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        components: rustfmt, clippy
+    - name: Formatting
+      uses: actions-rs/cargo@v1
+      with:
+        command: fmt
+        args: -- --check
+    - name: Lint
+      uses: actions-rs/cargo@v1
+      with:
+        command: clippy
+        args: -- -D warnings
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        components: rustfmt, clippy
+    - name: Test
+      uses: actions-rs/cargo@v1
+      with:
+        command: test

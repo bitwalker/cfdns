@@ -1,0 +1,25 @@
+[package]
+name = "cfdns"
+version = "0.1.0"
+edition = "2021"
+authors = ["Paul Schoenfelder <paulschoenfelder@fastmail.com>"]
+description = "A little tool for updating Cloudflare DNS from my UDM Pro"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "3.0", features = ["derive", "suggestions", "env"] }
+dirs = "4.0"
+env_logger = "0.9"
+ifcfg = "0.1.2"
+log = "0.4"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+toml = { version = "0.5", features = ["preserve_order"] }
+
+[profile.release]
+opt-level = 2
+lto = "fat"
+debug = true

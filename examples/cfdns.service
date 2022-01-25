@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync WAN interface addresses to Cloudflare DNS
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/mnt/data/on_boot.d/bin/cfdns sync --daemon --log=info
+
+[Install]
+WantedBy=multi-user.target
