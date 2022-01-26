@@ -26,6 +26,7 @@ With the prereqs out of the way, we can set up `cfdns` three different ways, dep
 to execute `cfdns` on a schedule as a one-shot utility. See [the example job file](examples/cfdns) for reference.
 2. Start a container via `podman` that runs `cfdns` as a daemon on a configured schedule
 3. (UDR/UDM SE only) Install a systemctl service that runs `cfdns` as a daemon. See [the example unit file](examples/cfdns.service) for reference.
+You can install this at `/etc/systemd/system/cfdns.service`, then run `systemctl daemon-reload && systemctl enable cfdns`
 
 If you are on a UDM Pro, I would recommend either option 1 or 2. For a UDR or UDM SE, I would recommend option 3. If I publish a Docker image for
 use with podman, it will be tagged as `bitwalker/cfdns:latest`. Since I'm not doing that yet, you'll need to either build the image yourself and
