@@ -25,7 +25,7 @@ jobs:
       with:
         use-cross: true
         command: build
-        args: --target aarch64-unknown-linux-musl
+        args: --release --target aarch64-unknown-linux-musl
     - name: Release
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
